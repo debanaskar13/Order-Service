@@ -1,7 +1,16 @@
 spring:
   config:
     import:
-      - optional:configserver:http://localhost:8888
+      - optional:configserver:https://ecommerce-config-service.onrender.com/
       - optional:file:.env[.properties]
   application:
     name: order-service
+  profiles:
+    active:
+      - dev
+
+application:
+  config:
+    cron:
+      expression: 0 */2 * * * *
+      order-older-than: 5
